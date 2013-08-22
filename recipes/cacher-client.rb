@@ -55,6 +55,7 @@ if servers.length > 0
     variables(
       :proxy => servers[0]['ipaddress'],
       :port => servers[0]['apt']['cacher_port']
+      :bypass => node['apt']['cache_bypass']
       )
     action( node['apt']['compiletime'] ? :nothing : :create )
     notifies :run, 'execute[apt-get update]', :immediately
